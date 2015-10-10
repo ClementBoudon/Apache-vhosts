@@ -1,0 +1,9 @@
+ServerName FULL_DOMAIN
+ServerAlias www.FULL_DOMAIN
+DocumentRoot /var/www/domains/ROOT_DOMAIN/SUB_DOMAIN/htdocs
+ErrorLog /var/www/domains/ROOT_DOMAIN/SUB_DOMAIN/logs/error_log
+CustomLog /var/www/domains/ROOT_DOMAIN/SUB_DOMAIN/logs/access_log combined
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^www\.FULL_DOMAIN+$ [NC]
+RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
